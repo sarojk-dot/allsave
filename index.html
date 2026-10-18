@@ -201,7 +201,37 @@ footer { border-top:1px solid var(--line); padding:25px 0; text-align:center; co
     यह संस्करण सीधे मीडिया डाउनलोड नहीं करता और डाउनलोड की गारंटी नहीं देता।
     केवल वही मीडिया डाउनलोड या साझा करें जिसके लिए आपके पास अनुमति हो।
   </div>
+</section> 
+<section class="wrap" id="direct-download">
+  <div class="section-head">
+    <h2>Direct Media Download</h2>
+    <p>अपनी या अधिकृत मीडिया फाइल का सीधा लिंक डालें।</p>
+  </div>
+
+  <div class="tool">
+    <input
+      class="linkinput"
+      id="fileUrl"
+      type="url"
+      placeholder="https://example.com/my-video.mp4"
+      aria-label="मीडिया फाइल का सीधा लिंक"
+    />
+
+    <button
+      class="btn"
+      id="downloadFileBtn"
+      type="button"
+      style="width:100%;margin-top:12px"
+    >
+      Download File ↓
+    </button>
+
+    <p class="status" id="downloadStatus" role="status">
+      केवल अपनी या अधिकृत फाइल का लिंक इस्तेमाल करें।
+    </p>
+  </div>
 </section>
+  
 </main>
 
 <footer>
@@ -303,6 +333,50 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+  
+document.getElementById('downloadFileBtn').addEventListener('click', async () => {
+  const input = document.getElementById('fileUrl');
+  const status = document.getElementById('downloadStatus');
+  let url;
+
+  try {
+    url = new URL(input.value.trim());
+    if (!['http:', 'https:'].includes(url.protocol) ||
+        url.username || url.password) {
+      throw new Error('invalid');
+    }
+  } catch (_) {
+    status.textContent = 'कृपया सही फाइल लिंक डालें।';
+    status.className = 'status error';
+    return;
+  }
+
+  status.textContent = 'डाउनलोड की कोशिश हो रही है…';
+
+  try {
+    const response = await fetch(url.href);
+    if (!response.ok) throw new Error('failed');
+
+    const blob = await response.blob();
+    if (blob.type === 'text/html') throw new Error('not media');
+
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = objectUrl;
+    a.download = url.pathname.split('/').pop() || 'media-file';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
+
+    status.textContent = 'डाउनलोड शुरू करने का अनुरोध भेज दिया गया।';
+    status.className = 'status success';
+  } catch (_) {
+    status.textContent = 'डाउनलोड नहीं हुआ। सर्वर की अनुमति या CORS जाँचें।';
+    status.className = 'status error';
+  }
+});
+  
 </script>
 </body>
 </html>
