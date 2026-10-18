@@ -1,306 +1,308 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b1020">
-<meta name="description" content="AllSave — सोशल मीडिया लिंक और अधिकृत मीडिया टूल्स के लिए एक सरल, मोबाइल-फ्रेंडली वेबसाइट।">
-<title>AllSave — Social Media Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d1c">
+<meta name="description" content="AllSave - सोशल मीडिया लिंक पहचानें और मूल पोस्ट तक पहुँचें।">
+<title>AllSave - Your Media. One Simple Place.</title>
 <style>
 :root {
-  color-scheme: dark;
-  --bg: #0b1020;
-  --panel: #121a30;
-  --line: #273451;
-  --text: #f7f8ff;
-  --muted: #aab4ce;
-  --accent: #8b5cf6;
+  --bg:#090d1c;
+  --panel:#121a30;
+  --line:#293451;
+  --text:#f7f7ff;
+  --muted:#aab3cc;
+  --purple:#8b5cf6;
 }
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, Arial, sans-serif;
-  line-height: 1.6;
+  margin:0;
+  background:radial-gradient(ellipse at 50% 15%,#2b1854 0,transparent 38%),var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.55;
 }
-a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
-.container { width: min(1080px, 92%); margin: auto; }
-header {
-  position: sticky; top: 0; z-index: 5;
-  background: #0b1020ed;
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(14px);
+.wrap { width:min(1080px,calc(100% - 32px)); margin:auto; }
+.topbar {
+  position:sticky; top:0; z-index:5;
+  background:#090d1cf2;
+  border-bottom:1px solid var(--line);
 }
-nav {
-  min-height: 70px; display: flex;
-  align-items: center; justify-content: space-between;
-  gap: 16px;
+.nav {
+  min-height:68px; display:flex;
+  align-items:center; justify-content:space-between; gap:15px;
 }
-.logo { font-size: 25px; font-weight: 850; letter-spacing: -.8px; }
-.logo span { color: #a78bfa; }
-.navlinks { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
-.hero {
-  text-align: center; padding: 72px 0 40px;
-  background: radial-gradient(ellipse at top, #39216b 0%, var(--bg) 67%);
-}
-.eyebrow {
-  color: #c4b5fd; text-transform: uppercase;
-  letter-spacing: 2px; font-size: 12px; font-weight: 750;
-}
-h1 { font-size: clamp(38px, 7vw, 66px); line-height: 1.1; margin: 18px 0; }
+.logo { font-size:27px; font-weight:850; text-decoration:none; color:white; }
+.logo span { color:#a78bfa; }
+.navlinks { display:flex; gap:18px; }
+.navlinks a { color:var(--muted); text-decoration:none; font-size:14px; }
+.hero { text-align:center; padding:65px 0 40px; }
+.eyebrow { color:#c4b5fd; font-size:13px; letter-spacing:3px; font-weight:800; }
+h1 { font-size:clamp(38px,7vw,70px); line-height:1.1; margin:20px 0; }
 .gradient {
-  background: linear-gradient(90deg,#c4b5fd,#8b5cf6,#60a5fa);
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
+  background:linear-gradient(90deg,#c4b5fd,#8b5cf6,#818cf8);
+  color:transparent; background-clip:text;
 }
-.subtitle { max-width: 650px; margin: 0 auto; color: var(--muted); }
-.panel {
-  margin: 30px auto 0; max-width: 750px;
-  background: #151c32; border: 1px solid #343d5b;
-  border-radius: 18px; padding: 12px;
-  box-shadow: 0 20px 70px #0005;
+.lead { color:var(--muted); font-size:18px; max-width:680px; margin:0 auto 30px; }
+.tool {
+  max-width:760px; margin:auto; padding:18px;
+  background:#151c32; border:1px solid #35405f;
+  border-radius:22px; text-align:left;
 }
-form { display: flex; gap: 10px; }
-input {
-  width: 100%; min-width: 0; padding: 15px;
-  color: white; background: #0c1224;
-  border: 1px solid var(--line); border-radius: 11px;
-  outline-offset: 3px;
+.inputrow { display:flex; gap:10px; }
+.linkinput {
+  min-width:0; flex:1; padding:16px;
+  background:#0d1427; color:white;
+  border:1px solid #34405f; border-radius:13px;
+  font:inherit; outline:none;
 }
-button {
-  border: 0; border-radius: 11px; padding: 14px 20px;
-  background: var(--accent); color: white;
-  font-weight: 750; cursor: pointer;
+.linkinput:focus { border-color:#a78bfa; }
+.btn {
+  padding:14px 18px; border:0; border-radius:12px;
+  background:linear-gradient(110deg,#8b5cf6,#6d5dfc);
+  color:white; font:inherit; font-weight:800; cursor:pointer;
 }
-button:hover { filter: brightness(1.13); }
-.status { min-height: 25px; margin: 8px 4px 0; font-size: 13px; color: var(--muted); }
-section { padding: 35px 0; }
-.section-head { margin-bottom: 20px; }
-h2 { font-size: 26px; margin: 0 0 6px; }
-.muted { color: var(--muted); margin: 0; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 14px;
+.secondary { background:#242d48; border:1px solid #3a4665; }
+.actions { display:flex; gap:10px; margin-top:10px; }
+.actions .btn { flex:1; }
+.hint { color:var(--muted); text-align:center; font-size:13px; }
+.status { color:var(--muted); font-size:14px; margin-top:12px; }
+.error { color:#ff8c9b; }
+.success { color:#62dfad; }
+.result {
+  display:none; margin-top:15px; padding:16px;
+  background:#0c1325; border:1px solid var(--line); border-radius:14px;
 }
+.result.show { display:block; }
+.result p { color:var(--muted); font-size:14px; }
+.result a { display:inline-block; text-decoration:none; }
+section { padding:35px 0; }
+.section-head { margin-bottom:22px; }
+.section-head h2 { font-size:clamp(27px,4vw,38px); margin:0 0 6px; }
+.section-head p { color:var(--muted); margin:0; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
 .card {
-  padding: 20px; border-radius: 16px;
-  background: var(--panel); border: 1px solid var(--line);
-  transition: transform .2s, border-color .2s;
+  padding:20px; min-height:145px;
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:18px;
 }
-.card:hover { transform: translateY(-3px); border-color: #8b5cf6; }
-.platform-icon {
-  width: 43px; height: 43px; border-radius: 13px;
-  display: grid; place-items: center;
-  background: #30224f; font-size: 23px; margin-bottom: 13px;
+.icon {
+  display:grid; place-items:center; width:45px; height:45px;
+  background:#302052; border-radius:13px;
+  color:#e9ddff; font-size:22px; margin-bottom:12px;
 }
-.card h3 { font-size: 16px; margin: 0 0 4px; }
-.card p { color: var(--muted); font-size: 13px; margin: 0; }
-.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-.step { padding: 19px; border: 1px solid var(--line); border-radius: 15px; }
-.number { color: #c4b5fd; font-weight: 850; font-size: 23px; }
-.notice {
-  padding: 18px; border: 1px solid var(--line);
-  border-radius: 14px; color: var(--muted); font-size: 13px;
+.card h3 { margin:0 0 5px; }
+.card p,.step p { color:var(--muted); font-size:14px; margin:0; }
+.howgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.step { padding:20px; background:var(--panel); border:1px solid var(--line); border-radius:17px; }
+.num { color:#c4b5fd; font-size:13px; font-weight:800; }
+.step h3 { margin:8px 0; }
+.notice { padding:17px; background:#1a1530; border:1px solid #5a467c; border-radius:15px; font-size:14px; }
+footer { border-top:1px solid var(--line); padding:25px 0; text-align:center; color:var(--muted); font-size:13px; }
+.small { color:var(--muted); font-size:12px; }
+@media(max-width:700px) {
+  .hero { padding:45px 0 25px; }
+  .inputrow { flex-direction:column; }
+  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .howgrid { grid-template-columns:1fr; }
+  .actions { flex-direction:column; }
+  .navlinks { gap:10px; }
+  .navlinks a { font-size:12px; }
 }
-footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 13px; }
-.footerlinks { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; }
-[hidden] { display: none !important; }
-@media(max-width:650px) {
-  .navlinks { gap: 12px; font-size: 12px; }
-  .grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
-  .card { padding: 14px; }
-  .steps { grid-template-columns: 1fr; }
-  .hero { padding-top: 48px; }
-  form { flex-direction: column; }
-  .logo { font-size: 22px; }
-}
-@media(max-width:370px) {
-  .navlinks a:nth-child(2) { display: none; }
+@media(max-width:380px) {
+  .grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <a class="logo" href="#" aria-label="AllSave Home">All<span>Save</span></a>
-    <div class="navlinks">
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="logo" href="#home">All<span>Save</span></a>
+    <nav class="navlinks">
       <a href="#platforms">Platforms</a>
-      <a href="#how">How it works</a>
+      <a href="#how">कैसे काम करता है</a>
       <a href="#about">About</a>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
-<main>
-  <div class="hero">
-    <div class="container">
-      <div class="eyebrow">Simple · Fast · Mobile Friendly</div>
-      <h1>Your Media.<br><span class="gradient">One Simple Place.</span></h1>
-      <p class="subtitle">
-        सोशल मीडिया लिंक पहचानें और उपलब्ध आधिकारिक
-        मीडिया सुविधाओं तक आसानी से पहुँचें।
-      </p>
+<main id="home">
+<section class="hero wrap">
+  <div class="eyebrow">SIMPLE · FAST · MOBILE FRIENDLY</div>
+  <h1>Your Media.<br><span class="gradient">One Simple Place.</span></h1>
+  <p class="lead">सोशल मीडिया लिंक पहचानें और उपलब्ध सुविधाओं तक आसानी से पहुँचें।</p>
 
-      <div class="panel">
-        <form id="linkForm">
-          <input id="mediaUrl" type="url" required
-            placeholder="वीडियो या पोस्ट का लिंक पेस्ट करें"
-            aria-label="पोस्ट का URL">
-          <button type="submit">Check Link ↗</button>
-        </form>
-        <p class="status" id="status" role="status" aria-live="polite">
-          शुरुआत करने के लिए कोई लिंक पेस्ट करें।
-        </p>
-        <button id="openLink" hidden type="button">
-          मूल पोस्ट खोलें ↗
-        </button>
+  <div class="tool">
+    <form id="linkForm" novalidate>
+      <div class="inputrow">
+        <input class="linkinput" id="mediaUrl" type="url"
+          inputmode="url" placeholder="वीडियो या पोस्ट का लिंक पेस्ट करें"
+          aria-label="सोशल मीडिया लिंक" required>
+        <button class="btn" type="submit">Check Link ↗</button>
       </div>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="pasteBtn">लिंक पेस्ट करें</button>
+        <button class="btn secondary" type="button" id="clearBtn">साफ करें</button>
+      </div>
+    </form>
+
+    <div class="status" id="status" role="status">
+      शुरू करने के लिए किसी समर्थित प्लेटफॉर्म का लिंक पेस्ट करें।
     </div>
+
+    <div class="result" id="result">
+      <strong id="resultTitle">प्लेटफॉर्म पहचाना गया</strong>
+      <p id="resultText"></p>
+      <a class="btn" id="openLink" href="#" target="_blank" rel="noopener noreferrer">
+        मूल पोस्ट खोलें ↗
+      </a>
+    </div>
+    <p class="hint">हर लिंक के लिए डाउनलोड उपलब्ध होना जरूरी नहीं है।</p>
   </div>
+</section>
 
-  <section class="container" id="platforms">
-    <div class="section-head">
-      <h2>Supported Platforms</h2>
-      <p class="muted">लोकप्रिय प्लेटफॉर्म के लिए लिंक टूल्स।</p>
-    </div>
-    <div class="grid">
-      <a class="card" href="https://www.instagram.com/">
-        <div class="platform-icon">◎</div>
-        <h3>Instagram</h3><p>Posts · Reels · Stories*</p>
-      </a>
-      <a class="card" href="https://www.facebook.com/">
-        <div class="platform-icon">f</div>
-        <h3>Facebook</h3><p>Posts · Videos*</p>
-      </a>
-      <a class="card" href="https://www.youtube.com/">
-        <div class="platform-icon">▶</div>
-        <h3>YouTube</h3><p>Videos · Shorts*</p>
-      </a>
-      <a class="card" href="https://www.tiktok.com/">
-        <div class="platform-icon">♪</div>
-        <h3>TikTok</h3><p>Available features vary</p>
-      </a>
-      <a class="card" href="https://www.pinterest.com/">
-        <div class="platform-icon">P</div>
-        <h3>Pinterest</h3><p>Pins · Images*</p>
-      </a>
-      <a class="card" href="https://www.reddit.com/">
-        <div class="platform-icon">◉</div>
-        <h3>Reddit</h3><p>Posts · Media*</p>
-      </a>
-    </div>
-    <p class="muted" style="font-size:12px;margin-top:12px">
-      * ये प्लेटफॉर्म लिंक हैं, सभी मीडिया के डाउनलोड की गारंटी नहीं।
-    </p>
-  </section>
+<section class="wrap" id="platforms">
+  <div class="section-head">
+    <h2>Supported Platforms</h2>
+    <p>लोकप्रिय सोशल मीडिया प्लेटफॉर्म।</p>
+  </div>
+  <div class="grid">
+    <article class="card"><div class="icon">◎</div><h3>Instagram</h3><p>Posts · Reels · Stories links</p></article>
+    <article class="card"><div class="icon">f</div><h3>Facebook</h3><p>Posts · Videos · Reels links</p></article>
+    <article class="card"><div class="icon">▶</div><h3>YouTube</h3><p>Videos · Shorts links</p></article>
+    <article class="card"><div class="icon">♪</div><h3>TikTok</h3><p>Video links</p></article>
+    <article class="card"><div class="icon">P</div><h3>Pinterest</h3><p>Pins · Images links</p></article>
+    <article class="card"><div class="icon">◉</div><h3>Reddit</h3><p>Posts · Media links</p></article>
+  </div>
+  <p class="small">उपलब्ध सुविधाएँ प्लेटफॉर्म के नियमों और पोस्ट की गोपनीयता पर निर्भर करती हैं।</p>
+</section>
 
-  <section class="container" id="how">
-    <div class="section-head">
-      <h2>How It Works</h2>
-      <p class="muted">तीन आसान स्टेप।</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="number">01</div>
-        <h3>Copy Link</h3><p class="muted">अपनी पोस्ट का URL कॉपी करें।</p></div>
-      <div class="step"><div class="number">02</div>
-        <h3>Check Link</h3><p class="muted">लिंक पेस्ट करके प्लेटफॉर्म पहचानें।</p></div>
-      <div class="step"><div class="number">03</div>
-        <h3>Open Source</h3><p class="muted">मूल पोस्ट या उपलब्ध आधिकारिक विकल्प खोलें।</p></div>
-    </div>
-  </section>
+<section class="wrap" id="how">
+  <div class="section-head">
+    <h2>कैसे काम करता है?</h2>
+    <p>तीन आसान चरण।</p>
+  </div>
+  <div class="howgrid">
+    <article class="step"><div class="num">STEP 01</div><h3>लिंक कॉपी करें</h3><p>सोशल मीडिया पोस्ट में Share विकल्प से लिंक कॉपी करें।</p></article>
+    <article class="step"><div class="num">STEP 02</div><h3>लिंक जाँचें</h3><p>AllSave में लिंक पेस्ट करके Check Link दबाएँ।</p></article>
+    <article class="step"><div class="num">STEP 03</div><h3>मूल पोस्ट खोलें</h3><p>पोस्ट खोलें और प्लेटफॉर्म की अधिकृत सुविधाएँ इस्तेमाल करें।</p></article>
+  </div>
+</section>
 
-  <section class="container" id="about">
-    <div class="notice">
-      <strong>Responsible Use</strong><br>
-      AllSave एक स्वतंत्र प्रोजेक्ट है, किसी सोशल मीडिया कंपनी
-      का आधिकारिक उत्पाद नहीं। केवल अपनी या अनुमति प्राप्त
-      सामग्री डाउनलोड करें। प्लेटफॉर्म की शर्तें और कॉपीराइट
-      नियम लागू होते हैं।
-    </div>
-  </section>
+<section class="wrap" id="about">
+  <div class="section-head">
+    <h2>About AllSave</h2>
+    <p>एक सरल, मोबाइल-फ्रेंडली लिंक पहचान टूल।</p>
+  </div>
+  <div class="notice">
+    <strong>नोट:</strong> AllSave किसी सोशल मीडिया प्लेटफॉर्म से संबद्ध नहीं है।
+    यह आपके ब्राउज़र में लिंक जाँचता है और लॉगिन विवरण नहीं माँगता।
+    यह संस्करण सीधे मीडिया डाउनलोड नहीं करता और डाउनलोड की गारंटी नहीं देता।
+    केवल वही मीडिया डाउनलोड या साझा करें जिसके लिए आपके पास अनुमति हो।
+  </div>
+</section>
 </main>
 
 <footer>
-  <div class="container">
-    <strong>AllSave</strong> · Independent media tools
-    <div class="footerlinks">
-      <a href="#about">About</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-    </div>
-    <p>© <span id="year"></span> AllSave. All rights reserved.</p>
+  <div class="wrap">
+    © <span id="year"></span> AllSave · Easy access to public links.
+    <br><span class="small">Independent project · Not affiliated with social media platforms.</span>
   </div>
 </footer>
 
 <script>
-const supportedHosts = {
-  "instagram.com": "Instagram",
-  "www.instagram.com": "Instagram",
-  "facebook.com": "Facebook",
-  "www.facebook.com": "Facebook",
-  "m.facebook.com": "Facebook",
-  "fb.watch": "Facebook",
-  "youtube.com": "YouTube",
-  "www.youtube.com": "YouTube",
-  "m.youtube.com": "YouTube",
-  "youtu.be": "YouTube",
-  "tiktok.com": "TikTok",
-  "www.tiktok.com": "TikTok",
-  "vm.tiktok.com": "TikTok",
-  "pinterest.com": "Pinterest",
-  "www.pinterest.com": "Pinterest",
-  "pin.it": "Pinterest",
-  "reddit.com": "Reddit",
-  "www.reddit.com": "Reddit",
-  "redd.it": "Reddit"
-};
+const form = document.getElementById('linkForm');
+const input = document.getElementById('mediaUrl');
+const statusBox = document.getElementById('status');
+const result = document.getElementById('result');
+const resultTitle = document.getElementById('resultTitle');
+const resultText = document.getElementById('resultText');
+const openLink = document.getElementById('openLink');
 
-let approvedUrl = "";
-const status = document.getElementById("status");
-const openButton = document.getElementById("openLink");
+const platforms = [
+  {name:'Instagram', hosts:['instagram.com','www.instagram.com','m.instagram.com']},
+  {name:'Facebook', hosts:['facebook.com','www.facebook.com','m.facebook.com','fb.watch','web.facebook.com']},
+  {name:'YouTube', hosts:['youtube.com','www.youtube.com','m.youtube.com','youtu.be','music.youtube.com']},
+  {name:'TikTok', hosts:['tiktok.com','www.tiktok.com','vm.tiktok.com','vt.tiktok.com']},
+  {name:'Pinterest', hosts:['pinterest.com','www.pinterest.com','pin.it']},
+  {name:'Reddit', hosts:['reddit.com','www.reddit.com','old.reddit.com','redd.it']}
+];
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+function setStatus(message,type='') {
+  statusBox.textContent = message;
+  statusBox.className = 'status' + (type ? ' ' + type : '');
+}
 
-document.getElementById("linkForm").addEventListener("submit", event => {
-  event.preventDefault();
-  approvedUrl = "";
-  openButton.hidden = true;
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  result.classList.remove('show');
+  const raw = input.value.trim();
 
+  if (!raw) {
+    setStatus('पहले कोई लिंक पेस्ट करें।','error');
+    return;
+  }
+
+  let url;
   try {
-    const url = new URL(
-      document.getElementById("mediaUrl").value.trim()
-    );
+    url = new URL(raw);
+  } catch (_) {
+    setStatus('लिंक सही नहीं है। पूरा https:// वाला लिंक पेस्ट करें।','error');
+    return;
+  }
 
-    if (!["https:", "http:"].includes(url.protocol) ||
-        url.username || url.password) {
-      throw new Error("Invalid URL");
+  if (url.protocol !== 'https:' && url.protocol !== 'http:') {
+    setStatus('केवल http या https लिंक स्वीकार किए जाते हैं।','error');
+    return;
+  }
+
+  if (url.username || url.password) {
+    setStatus('लॉगिन विवरण वाले लिंक स्वीकार नहीं किए जाते।','error');
+    return;
+  }
+
+  const platform = platforms.find(p => p.hosts.includes(url.hostname.toLowerCase()));
+
+  if (!platform) {
+    setStatus('यह लिंक समर्थित प्लेटफॉर्म का नहीं है।','error');
+    return;
+  }
+
+  resultTitle.textContent = platform.name + ' लिंक पहचाना गया ✓';
+  resultText.textContent = 'यह लिंक ' + platform.name +
+    ' का है। पोस्ट निजी या हटाई गई हो सकती है। डाउनलोड की गारंटी नहीं है।';
+  openLink.href = url.href;
+  result.classList.add('show');
+  setStatus('लिंक जाँच पूरी हुई।','success');
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  input.value = '';
+  result.classList.remove('show');
+  setStatus('शुरू करने के लिए किसी समर्थित प्लेटफॉर्म का लिंक पेस्ट करें।');
+  input.focus();
+});
+
+document.getElementById('pasteBtn').addEventListener('click', async () => {
+  try {
+    if (!navigator.clipboard || !navigator.clipboard.readText) {
+      throw new Error('clipboard');
     }
-
-    const platform = supportedHosts[url.hostname.toLowerCase()];
-    if (!platform) {
-      status.textContent = "यह प्लेटफॉर्म समर्थित सूची में नहीं है।";
+    const text = await navigator.clipboard.readText();
+    if (!text.trim()) {
+      setStatus('क्लिपबोर्ड खाली है। पहले लिंक कॉपी करें।','error');
       return;
     }
-
-    approvedUrl = url.href;
-    status.textContent =
-      platform + " लिंक पहचाना गया। डाउनलोड की उपलब्धता अलग हो सकती है।";
-    openButton.hidden = false;
-  } catch {
-    status.textContent = "कृपया सही सार्वजनिक पोस्ट URL डालें।";
+    input.value = text.trim();
+    setStatus('लिंक पेस्ट हो गया। अब Check Link दबाएँ।','success');
+  } catch (_) {
+    setStatus('इनपुट बॉक्स पर दबाकर रखें और Paste चुनें।','error');
+    input.focus();
   }
 });
 
-openButton.addEventListener("click", () => {
-  if (approvedUrl) {
-    window.open(approvedUrl, "_blank", "noopener,noreferrer");
-  }
-});
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
